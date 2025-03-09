@@ -7,14 +7,14 @@ public class DataHandler {
 
     public void getOutput() {
         // критичний блок коду
-        synch(this) {
+        synchronized (this) {
             StringBuilder sb = new StringBuilder();
-            count = new AtomicInteger(1);
+            AtomicInteger count = new AtomicInteger(1);
             for (String fruit : fruits) {
                 sb.append(String.format("(%d) %s ",
-                        count, fruit));
+                        count.getAndIncrement(), fruit));
             }
-            System.out.println(currentThread().getName() + ": " + sb);
+            System.out.println(Thread.currentThread().getName() + ": " + sb);
         }
     }
 }

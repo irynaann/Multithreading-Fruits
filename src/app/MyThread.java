@@ -1,14 +1,14 @@
 package app;
 
-class MyThread extends {
-    dataHandler;
+class MyThread extends Thread {
+    DataHandler dataHandler;
 
     public MyThread(String name, DataHandler dataHandler) {
         super(name);
         this.dataHandler = dataHandler;
     }
 
-    public run() {
+    public void run() {
         dataHandler.getOutput();
     }
 }
